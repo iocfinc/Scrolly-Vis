@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrollytelling Starter</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="story">
+        <header class="story-header">
+          <p class="eyebrow">Experiment narrative</p>
+          <h1>Replace this title with the main finding</h1>
+          <p class="dek">Summarize the reader payoff in one sentence.</p>
+        </header>
+
+        <article class="story-steps">
+          <section class="step is-active" data-step="0">
+            <h2>Baseline</h2>
+            <p>Show the reader the starting condition.</p>
+          </section>
+          <section class="step" data-step="1">
+            <h2>Comparison</h2>
+            <p>Introduce the change or contrast.</p>
+          </section>
+          <section class="step" data-step="2">
+            <h2>Anomaly</h2>
+            <p>Explain the surprising point or outlier.</p>
+          </section>
+          <section class="step" data-step="3">
+            <h2>Implication</h2>
+            <p>End with what the result means.</p>
+          </section>
+        </article>
+      </section>
+
+      <aside class="viz-shell">
+        <div class="viz-card">
+          <div class="viz-meta">
+            <span id="state-label">Baseline</span>
+            <span id="state-value">0%</span>
+          </div>
+          <div class="viz-stage">
+            <div class="bar-track">
+              <div class="bar-fill" id="bar-fill"></div>
+            </div>
+            <p class="viz-caption" id="viz-caption">Set the first explanatory note here.</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script type="module" src="./story.js"></script>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scrollytelling + TOAST UI Chart (stable highlights)</title>
+
+  <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b0f14;
+      --muted:#4b5563;
+      --grid:#e5e7eb;
+
+      --orange:#FFA028;
+      --black:#000000;
+      --pink:#F73BA9;
+    }
+
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+
+    .page{
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 16px 90px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (max-width: 920px){
+      .page{grid-template-columns: 1fr;}
+      .viz{position: relative !important; top: 0 !important;}
+      .step{min-height: 52vh;}
+    }
+
+    .story h2{margin: 8px 0 10px;font-size: 18px;}
+    .lede{color:var(--muted);font-size:14px;margin:0 0 14px;max-width:58ch;}
+
+    .step{
+      margin: 0 0 16px;
+      padding: 16px 16px;
+      border-left: 4px solid transparent;
+      background: #fafafa;
+      border-radius: 10px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+      min-height: 70vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .step.is-active{
+      border-left-color: var(--pink);
+      background: #fff7fb;
+      box-shadow: 0 14px 36px rgba(247,59,169,0.10);
+    }
+    .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:10px;}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);}
+    .step p{margin:0;font-size:16px;line-height:1.55;max-width:62ch;}
+    .step p + p{margin-top:10px;color:var(--muted);font-size:14px;}
+
+    .viz{position: sticky; top: 14px; align-self: start;}
+    .chartHeader{padding: 4px 0 10px 0;}
+    .chartTitle{font-size: 34px;font-weight: 800;letter-spacing:-0.4px;margin:0 0 6px;line-height:1.05;}
+    .chartSubtitle{margin:0 0 12px;font-size:18px;color:var(--muted);line-height:1.25;}
+
+    .legendRow{display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin-bottom:10px;}
+    .legendItem{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--text);white-space:nowrap;}
+    .swatch{width:16px;height:16px;border-radius:4px;}
+
+    .chartWrap{position: relative;border-top:1px solid var(--grid);padding-top:10px;}
+    #chart{position: relative;height: 460px;}
+
+    .source{margin-top:10px;font-size:14px;color:var(--muted);}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <main class="story" id="scrolly">
+      <h2>Article (lorem scrollytelling)</h2>
+      <p class="lede">
+        Scroll down—each step triggers a visual state on the sticky chart (highlighting).
+      </p>
+
+      <section class="step" data-step="0">
+        <div class="kicker"><span class="dot"></span> Step 1 — Baseline</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor.</p>
+        <p>Baseline view: all months orange, with <b>each January</b> highlighted in black.</p>
+      </section>
+
+      <section class="step" data-step="1">
+        <div class="kicker"><span class="dot"></span> Step 2 — Highlight June (pink)</div>
+        <p>Nulla facilisi. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.</p>
+        <p>We highlight <b>June</b> across five years using a pink accent, while keeping January in black.</p>
+      </section>
+
+      <section class="step" data-step="2">
+        <div class="kicker"><span class="dot"></span> Step 3 — Same highlight, different framing</div>
+        <p>Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.</p>
+        <p>The chart stays the same, but the story shifts: June is framed as a recurring point of interest.</p>
+      </section>
+
+      <section class="step" data-step="3">
+        <div class="kicker"><span class="dot"></span> Step 4 — Reset</div>
+        <p>Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien.</p>
+        <p>Reset back to baseline (no June highlight).</p>
+      </section>
+    </main>
+
+    <aside class="viz">
+      <div class="chartHeader">
+        <h1 class="chartTitle">Worst January for Job-Cut Announcements Since 2009</h1>
+        <p class="chartSubtitle">Hiring intentions also slipped from same month a year ago</p>
+
+        <div class="legendRow" aria-label="legend">
+          <div class="legendItem"><span class="swatch" style="background: var(--orange)"></span> Announced job cuts</div>
+          <div class="legendItem"><span class="swatch" style="background: var(--black)"></span> Each January</div>
+          <div class="legendItem"><span class="swatch" style="background: var(--pink)"></span> Each June (highlight)</div>
+        </div>
+      </div>
+
+      <div class="chartWrap">
+        <div id="chart"></div>
+      </div>
+
+      <div class="source">Source: Challenger, Gray &amp; Christmas Inc.</div>
+    </aside>
+  </div>
+
+  <script src="https://unpkg.com/scrollama@3.2.0/build/scrollama.min.js"></script>
+  <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+
+  <script>
+    const raw = [
+      ["2021-01-31 05:00:00",79552],["2021-02-28 05:00:00",34531],["2021-03-31 04:00:00",30603],["2021-04-30 04:00:00",22913],
+      ["2021-05-31 04:00:00",24586],["2021-06-30 04:00:00",20476],["2021-07-31 04:00:00",18942],["2021-08-31 04:00:00",15723],
+      ["2021-09-30 04:00:00",17895],["2021-10-31 04:00:00",22822],["2021-11-30 05:00:00",14875],["2021-12-31 05:00:00",19052],
+      ["2022-01-31 05:00:00",19064],["2022-02-28 05:00:00",15245],["2022-03-31 04:00:00",21387],["2022-04-30 04:00:00",24286],
+      ["2022-05-31 04:00:00",20712],["2022-06-30 04:00:00",32517],["2022-07-31 04:00:00",25810],["2022-08-31 04:00:00",20485],
+      ["2022-09-30 04:00:00",29989],["2022-10-31 04:00:00",33843],["2022-11-30 05:00:00",76835],["2022-12-31 05:00:00",43651],
+      ["2023-01-31 05:00:00",102943],["2023-02-28 05:00:00",77770],["2023-03-31 04:00:00",89703],["2023-04-30 04:00:00",66995],
+      ["2023-05-31 04:00:00",80089],["2023-06-30 04:00:00",40709],["2023-07-31 04:00:00",23697],["2023-08-31 04:00:00",75151],
+      ["2023-09-30 04:00:00",47457],["2023-10-31 04:00:00",36836],["2023-11-30 05:00:00",45510],["2023-12-31 05:00:00",34817],
+      ["2024-01-31 05:00:00",82307],["2024-02-29 05:00:00",84638],["2024-03-31 04:00:00",90309],["2024-04-30 04:00:00",64789],
+      ["2024-05-31 04:00:00",63816],["2024-06-30 04:00:00",48786],["2024-07-31 04:00:00",25885],["2024-08-31 04:00:00",75891],
+      ["2024-09-30 04:00:00",72821],["2024-10-31 04:00:00",55597],["2024-11-30 05:00:00",57727],["2024-12-31 05:00:00",38792],
+      ["2025-01-31 05:00:00",49795],["2025-02-28 05:00:00",172017],["2025-03-31 04:00:00",275240],["2025-04-30 04:00:00",105441],
+      ["2025-05-31 04:00:00",93816],["2025-06-30 04:00:00",47999],["2025-07-31 04:00:00",62075],["2025-08-31 04:00:00",85979],
+      ["2025-09-30 04:00:00",54064],["2025-10-31 04:00:00",153074],["2025-11-30 05:00:00",71321],["2025-12-31 05:00:00",35553],
+      ["2026-01-31 05:00:00",108435]
+    ];
+
+    const ORANGE = '#FFA028';
+    const BLACK = '#000000';
+    const PINK = '#F73BA9';
+
+    const labels = raw.map(([d]) => d.slice(0, 7));
+    const values = raw.map(([, v]) => v);
+    const januaryIdx = labels.map((m, i) => (m.endsWith('-01') ? i : -1)).filter((i) => i >= 0);
+    const juneIdx = labels.map((m, i) => (m.endsWith('-06') ? i : -1)).filter((i) => i >= 0).slice(0, 5);
+
+    const host = document.getElementById('chart');
+    host.style.position = 'relative';
+    const mount = document.createElement('div');
+    mount.style.height = '100%';
+    mount.style.width = '100%';
+    host.appendChild(mount);
+
+
+    function colorsForState(state) {
+      const colors = Array(labels.length).fill(ORANGE);
+      januaryIdx.forEach((i) => { colors[i] = BLACK; });
+      if (state === 'june') {
+        juneIdx.forEach((i) => { colors[i] = PINK; });
+      }
+      return colors;
+    }
+
+    function chartData() {
+      return {
+        categories: labels,
+        series: [{
+          name: 'Announced job cuts',
+          colorByCategories: true,
+          data: values
+        }]
+      };
+    }
+
+    function chartOptions(state) {
+      return {
+        chart: { width: mount.clientWidth, height: 460 },
+        legend: { visible: false },
+        xAxis: { label: { interval: 12 }, tick: { interval: 12 } },
+        yAxis: { label: { formatter: (v) => (v >= 1000 ? (v / 1000).toFixed(0) + 'K' : v) } },
+        tooltip: { enabled: true },
+        series: {
+          selectable: true
+        },
+        theme: {
+          chart: { background: 'transparent' },
+          series: { colors: colorsForState(state) },
+          xAxis: { label: { color: '#000000' }, tickColor: '#000000' },
+          yAxis: { label: { color: '#000000' } },
+          plot: { verticalLineColor: '#e5e7eb', horizontalLineColor: '#e5e7eb' }
+        }
+      };
+    }
+
+    const chart = toastui.Chart.columnChart({
+      el: mount,
+      data: chartData(),
+      options: chartOptions('baseline')
+    });
+
+    let currentState = 'baseline';
+
+    function applyState(state) {
+      currentState = state;
+      chart.setOptions(chartOptions(state));
+    }
+
+    function handleStepEnter(resp) {
+      document.querySelectorAll('.step').forEach((s) => s.classList.remove('is-active'));
+      resp.element.classList.add('is-active');
+      const step = Number(resp.element.dataset.step);
+      if (step === 0) applyState('baseline');
+      if (step === 1 || step === 2) applyState('june');
+      if (step === 3) applyState('baseline');
+    }
+
+    const scroller = scrollama();
+    scroller.setup({ step: '.step', offset: 0.60, debug: false }).onStepEnter(handleStepEnter);
+
+    const ro = new ResizeObserver(() => {
+      chart.resize({ width: mount.clientWidth, height: 460 });
+      applyState(currentState);
+    });
+    ro.observe(mount);
+
+    window.addEventListener('resize', scroller.resize);
+    applyState('baseline');
+  </script>
+</body>
+</html>

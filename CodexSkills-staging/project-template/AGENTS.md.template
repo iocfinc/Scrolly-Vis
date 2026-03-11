@@ -1,0 +1,40 @@
+## Project Overview
+
+Describe the product, the main apps or packages, and the important domain terms Codex must understand before editing anything.
+
+## Repository Map
+
+- `app/`: primary application code
+- `tests/`: automated tests
+- `docs/`: architecture, API, and domain notes
+- `scripts/`: deterministic helper scripts
+
+Replace this map with the real structure. Keep it short and specific.
+
+## Commands
+
+- Install: `REPLACE_ME`
+- Dev: `REPLACE_ME`
+- Lint: `REPLACE_ME`
+- Test: `REPLACE_ME`
+- Typecheck: `REPLACE_ME`
+- Build: `REPLACE_ME`
+- Full verify: `REPLACE_ME`
+
+## Working Agreements
+
+- Read the nearest `AGENTS.md` before changing code in a directory.
+- Prefer targeted tests for changed code first, then run the broader verify command when practical.
+- Do not change generated files unless the source and generation command are both updated.
+- Do not add dependencies without clear need.
+- Keep edits minimal and local to the task.
+
+## Code Review Expectations
+
+- Call out behavioral risks and migrations.
+- Note any untested paths.
+- State exactly which commands were run.
+
+## Subproject Rules
+
+Add nested `AGENTS.md` files in subdirectories only if commands, constraints, or architecture materially differ.

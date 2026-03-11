@@ -1,0 +1,234 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas-bg, #ece8e2);
+  color: var(--text, #111111);
+  font-family: "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.studio {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 160, 40, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(247, 59, 169, 0.12), transparent 26%),
+    var(--canvas-bg);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 26px 18px;
+  border-bottom: 1px solid color-mix(in srgb, var(--grid) 70%, transparent);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(18px);
+  background: color-mix(in srgb, var(--canvas-bg) 84%, transparent);
+  z-index: 10;
+}
+
+.eyebrow,
+.frameMeta {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.projectName {
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font-size: 28px;
+  font-weight: 700;
+  padding: 0;
+  min-width: 240px;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 320px;
+  gap: 18px;
+  padding: 18px;
+}
+
+.sidebar,
+.inspector,
+.canvasArea {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.panel,
+.frameCard {
+  background: color-mix(in srgb, var(--panel-bg) 88%, white 12%);
+  border: 1px solid color-mix(in srgb, var(--grid) 78%, transparent);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+}
+
+.frameCard h1 {
+  margin: 10px 0 6px;
+  font-size: clamp(32px, 4vw, 60px);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  max-width: 14ch;
+}
+
+.subtitle {
+  margin: 0 0 18px;
+  font-size: clamp(18px, 2vw, 32px);
+  max-width: 34ch;
+}
+
+.previewWrap {
+  position: relative;
+  min-height: 560px;
+  border-top: 1px solid var(--grid);
+  padding-top: 18px;
+}
+
+.previewCanvas {
+  height: 560px;
+}
+
+.topbarActions,
+.inlineRow,
+.footerMeta,
+.panelHeader,
+.stateList,
+.tokenList,
+.inspectorList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.topbarActions {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ghostButton,
+.accentButton,
+.stateButton,
+.listItem,
+.token {
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--grid) 80%, transparent);
+  background: color-mix(in srgb, var(--card-bg) 84%, white 16%);
+  color: var(--text);
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.accentButton {
+  background: linear-gradient(135deg, var(--orange), var(--accent));
+  border-color: transparent;
+  color: #111111;
+  font-weight: 700;
+}
+
+.stateButton.is-active {
+  background: var(--text);
+  color: var(--canvas-bg);
+}
+
+.listItem,
+.token {
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+select,
+input,
+textarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--grid) 80%, transparent);
+  background: color-mix(in srgb, var(--card-bg) 88%, white 12%);
+  color: var(--text);
+  padding: 11px 12px;
+}
+
+textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.toggle {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+.toggle input {
+  width: auto;
+}
+
+.tableWrap {
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--grid) 70%, transparent);
+  text-align: left;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.emptyState {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  border: 1px dashed var(--grid);
+  border-radius: 22px;
+  color: var(--muted);
+}
+
+.footerMeta {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 1220px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+}

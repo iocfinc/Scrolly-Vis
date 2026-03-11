@@ -1,0 +1,4 @@
+interface:
+  display_name: "Python Env Bootstrap"
+  short_description: "Set up pyproject-based Python envs"
+  default_prompt: "Use $python-env-bootstrap to initialize a Python project environment from pyproject.toml, with venv fallback if needed."

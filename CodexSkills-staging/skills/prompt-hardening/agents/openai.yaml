@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Hardening"
+  short_description: "Tighten AGENTS and task specs"
+  default_prompt: "Use $prompt-hardening to improve this AGENTS.md, task brief, and acceptance criteria for Codex."

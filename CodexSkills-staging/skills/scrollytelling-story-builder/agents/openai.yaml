@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scrollytelling Builder"
+  short_description: "Build scroll-driven data stories"
+  default_prompt: "Use $scrollytelling-story-builder to turn this dataset, experiment, or analysis into a scrollytelling narrative with sticky visuals and step-driven states."

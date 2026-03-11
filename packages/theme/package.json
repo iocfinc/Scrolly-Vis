@@ -1,0 +1,12 @@
+{
+  "name": "@storycharts/theme",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "sc-theme.css",
+  "files": ["sc-theme.css"],
+  "scripts": {
+    "build": "echo \"No build required for @storycharts/theme\"",
+    "typecheck": "echo \"No typecheck required for @storycharts/theme\"",
+    "test": "echo \"No tests for @storycharts/theme\""
+  }
+}

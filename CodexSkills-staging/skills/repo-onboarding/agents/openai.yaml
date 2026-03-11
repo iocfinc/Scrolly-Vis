@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repo Onboarding"
+  short_description: "Map unfamiliar repos fast for Codex"
+  default_prompt: "Use $repo-onboarding to map this repository, identify risks, and produce a concise execution plan."

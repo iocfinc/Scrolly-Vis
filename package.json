@@ -1,0 +1,22 @@
+{
+  "name": "storycharts",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @storycharts/core && npm run build -w @storycharts/theme && npm run build -w @storycharts/scroll && npm run build -w @storycharts/studio",
+    "test": "npm run test -w @storycharts/core && npm run test -w @storycharts/studio",
+    "typecheck": "npm run typecheck -w @storycharts/core && npm run typecheck -w @storycharts/studio"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@storycharts/scroll",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "build": "echo \"No build required for @storycharts/scroll\"",
+    "typecheck": "echo \"No typecheck required for @storycharts/scroll\"",
+    "test": "echo \"No tests in @storycharts/scroll\""
+  },
+  "peerDependencies": {
+    "@storycharts/core": "^0.1.0"
+  }
+}

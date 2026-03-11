@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Project Planner"
+  short_description: "Turn app ideas into Codex-ready plans"
+  default_prompt: "Use $codex-project-planner to turn this project idea into a scoped implementation plan and repo starter."
